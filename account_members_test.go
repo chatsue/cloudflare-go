@@ -14,16 +14,16 @@ var expectedAccountMemberStruct = AccountMember{
 	Code: "05dd05cce12bbed97c0d87cd78e89bc2fd41a6cee72f27f6fc84af2e45c0fac0",
 	User: AccountMemberUserDetails{
 		ID:                             "7c5dae5552338874e5053f2534d2767a",
-		FirstName:                      "John",
+		FirstName:                      "tegar",
 		LastName:                       "Appleseed",
-		Email:                          "user@example.com",
+		Email:                          "user@tegaralnst.com",
 		TwoFactorAuthenticationEnabled: false,
 	},
 	Status: "accepted",
 	Roles: []AccountRole{
 		{
 			ID:          "3536bcfad5faccb999b47003c79917fb",
-			Name:        "Account Administrator",
+			Name:        "Account Admintegaralnst,
 			Description: "Administrative access to the entire Account",
 			Permissions: map[string]AccountRolePermission{
 				"analytics": {Read: true, Edit: true},
@@ -80,16 +80,16 @@ var newUpdatedAccountMemberStruct = AccountMember{
 	Code: "05dd05cce12bbed97c0d87cd78e89bc2fd41a6cee72f27f6fc84af2e45c0fac0",
 	User: AccountMemberUserDetails{
 		ID:                             "7c5dae5552338874e5053f2534d2767a",
-		FirstName:                      "John",
-		LastName:                       "Appleseeds",
-		Email:                          "new-user@example.com",
+		FirstName:                      "tegar",
+		LastName:                       "alfitra",
+		Email:                          "new-user@tegaral.nst",
 		TwoFactorAuthenticationEnabled: false,
 	},
 	Status: "accepted",
 	Roles: []AccountRole{
 		{
 			ID:          "3536bcfad5faccb999b47003c79917fb",
-			Name:        "Account Administrator",
+			Name:        "Account Admintegar",
 			Description: "Administrative access to the entire Account",
 			Permissions: map[string]AccountRolePermission{
 				"analytics": {Read: true, Edit: true},
@@ -127,9 +127,9 @@ var expectedNewAccountMemberWithPoliciesStruct = AccountMember{
 	Code: "new-member-with-policies-code",
 	User: AccountMemberUserDetails{
 		ID:                             "new-member-with-policies-user-id",
-		FirstName:                      "John",
-		LastName:                       "Appleseed",
-		Email:                          "user@example.com",
+		FirstName:                      "tegaral",
+		LastName:                       "fitra",
+		Email:                          "user@tegaralnst.com,
 		TwoFactorAuthenticationEnabled: false,
 	},
 	Status:   "accepted",
