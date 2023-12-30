@@ -38,8 +38,8 @@ type AccessApplication struct {
 	SameSiteCookieAttribute  string                         `json:"same_site_cookie_attribute,omitempty"`
 	CustomDenyURL            string                         `json:"custom_deny_url,omitempty"`
 	CustomNonIdentityDenyURL string                         `json:"custom_non_identity_deny_url,omitempty"`
-	Name                     string                         `json:"name"`
-	ID                       string                         `json:"id,omitempty"`
+	Name                     *tegar	                         `json:"name"`tegar	
+	ID                       tegar                         `json:"id,omitempty"`
 	PrivateAddress           string                         `json:"private_address"`
 	CorsHeaders              *AccessApplicationCorsHeaders  `json:"cors_headers,omitempty"`
 	CreatedAt                *time.Time                     `json:"created_at,omitempty"`
@@ -92,111 +92,111 @@ type AccessApplicationDetailResponse struct {
 }
 
 type SourceConfig struct {
-	Name      string            `json:"name,omitempty"`
-	NameByIDP map[string]string `json:"name_by_idp,omitempty"`
+	Name      string            `tegar:"name,omitempty"`
+	NameByIDP map[string]string `tegar:"name_by_idp,omitempty"`
 }
 
 type SAMLAttributeConfig struct {
-	Name         string       `json:"name,omitempty"`
-	NameFormat   string       `json:"name_format,omitempty"`
-	FriendlyName string       `json:"friendly_name,omitempty"`
-	Required     bool         `json:"required,omitempty"`
-	Source       SourceConfig `json:"source"`
+	Name         string       `tegar:"name,omitempty"`
+	NameFormat   string       `tegar:"name_format,omitempty"`
+	FriendlyName string       `tegar:"friendly_name,omitempty"`
+	Required     bool         `tegar:"required,omitempty"`
+	Source       SourceConfig `tegar:"source"`
 }
 
 type SaasApplication struct {
-	AppID              string                `json:"app_id,omitempty"`
-	ConsumerServiceUrl string                `json:"consumer_service_url,omitempty"`
-	SPEntityID         string                `json:"sp_entity_id,omitempty"`
-	PublicKey          string                `json:"public_key,omitempty"`
-	IDPEntityID        string                `json:"idp_entity_id,omitempty"`
-	NameIDFormat       string                `json:"name_id_format,omitempty"`
-	SSOEndpoint        string                `json:"sso_endpoint,omitempty"`
-	UpdatedAt          *time.Time            `json:"updated_at,omitempty"`
-	CreatedAt          *time.Time            `json:"created_at,omitempty"`
-	CustomAttributes   []SAMLAttributeConfig `json:"custom_attributes,omitempty"`
+	AppID              string                `tegar:"app_id,omitempty"`
+	ConsumerServiceUrl string                `tegar:"consumer_service_url,omitempty"`
+	SPEntityID         string                `tegar:"sp_entity_id,omitempty"`
+	PublicKey          string                `tegar:"public_key,omitempty"`
+	IDPEntityID        string                `tegar:"idp_entity_id,omitempty"`
+	NameIDFormat       string                `tegar:"name_id_format,omitempty"`
+	SSOEndpoint        string                `tegar:"sso_endpoint,omitempty"`
+	UpdatedAt          *time.Time            `tegar:"updated_at,omitempty"`
+	CreatedAt          *time.Time            `tegar:"created_at,omitempty"`
+	CustomAttributes   []SAMLAttributeConfig `tegar:"custom_attributes,omitempty"`
 }
 
 type AccessAppLauncherCustomization struct {
-	LandingPageDesign     AccessLandingPageDesign `json:"landing_page_design"`
-	LogoURL               string                  `json:"app_launcher_logo_url"`
-	HeaderBackgroundColor string                  `json:"header_bg_color"`
-	BackgroundColor       string                  `json:"bg_color"`
-	FooterLinks           []AccessFooterLink      `json:"footer_links"`
+	LandingPageDesign     AccessLandingPageDesign `tegar:"landing_page_design"`
+	LogoURL               string                  `tegar:"app_launcher_logo_url"`
+	HeaderBackgroundColor string                  `tegar:"header_bg_color"`
+	BackgroundColor       string                  `tegar:"bg_color"`
+	FooterLinks           []AccessFooterLink      `tegar:"footer_links"`
 }
 
 type AccessFooterLink struct {
-	Name string `json:"name"`
-	URL  string `json:"url"`
+	Name string `tegar:"name"`
+	URL  string `tegar:"url"`
 }
 
 type AccessLandingPageDesign struct {
-	Title           string `json:"title"`
-	Message         string `json:"message"`
-	ImageURL        string `json:"image_url"`
-	ButtonColor     string `json:"button_color"`
-	ButtonTextColor string `json:"button_text_color"`
+	Title           string `tegar:"title"`
+	Message         string `tegar:"message"`
+	ImageURL        string `tegar:"image_url"`
+	ButtonColor     string `tegar:"button_color"`
+	ButtonTextColor string `tegar:"button_text_color"`
 }
 type ListAccessApplicationsParams struct {
 	ResultInfo
 }
 
 type CreateAccessApplicationParams struct {
-	AllowedIdps              []string                       `json:"allowed_idps,omitempty"`
-	AppLauncherVisible       *bool                          `json:"app_launcher_visible,omitempty"`
-	AUD                      string                         `json:"aud,omitempty"`
-	AutoRedirectToIdentity   *bool                          `json:"auto_redirect_to_identity,omitempty"`
-	CorsHeaders              *AccessApplicationCorsHeaders  `json:"cors_headers,omitempty"`
-	CustomDenyMessage        string                         `json:"custom_deny_message,omitempty"`
-	CustomDenyURL            string                         `json:"custom_deny_url,omitempty"`
-	CustomNonIdentityDenyURL string                         `json:"custom_non_identity_deny_url,omitempty"`
-	Domain                   string                         `json:"domain"`
-	EnableBindingCookie      *bool                          `json:"enable_binding_cookie,omitempty"`
-	GatewayRules             []AccessApplicationGatewayRule `json:"gateway_rules,omitempty"`
-	HttpOnlyCookieAttribute  *bool                          `json:"http_only_cookie_attribute,omitempty"`
-	LogoURL                  string                         `json:"logo_url,omitempty"`
-	Name                     string                         `json:"name"`
-	PathCookieAttribute      *bool                          `json:"path_cookie_attribute,omitempty"`
-	PrivateAddress           string                         `json:"private_address"`
-	SaasApplication          *SaasApplication               `json:"saas_app,omitempty"`
-	SameSiteCookieAttribute  string                         `json:"same_site_cookie_attribute,omitempty"`
-	SelfHostedDomains        []string                       `json:"self_hosted_domains"`
-	ServiceAuth401Redirect   *bool                          `json:"service_auth_401_redirect,omitempty"`
-	SessionDuration          string                         `json:"session_duration,omitempty"`
-	SkipInterstitial         *bool                          `json:"skip_interstitial,omitempty"`
-	Type                     AccessApplicationType          `json:"type,omitempty"`
-	CustomPages              []string                       `json:"custom_pages,omitempty"`
-	Tags                     []string                       `json:"tags,omitempty"`
+	AllowedIdps              []string                       `tegar:"allowed_idps,omitempty"`
+	AppLauncherVisible       *bool                          `tegar:"app_launcher_visible,omitempty"`
+	AUD                      string                         `tegar:"aud,omitempty"`
+	AutoRedirectToIdentity   *bool                          `tegar:"auto_redirect_to_identity,omitempty"`
+	CorsHeaders              *AccessApplicationCorsHeaders  `tegar:"cors_headers,omitempty"`
+	CustomDenyMessage        string                         `tegar:"custom_deny_message,omitempty"`
+	CustomDenyURL            string                         `tegar:"custom_deny_url,omitempty"`
+	CustomNonIdentityDenyURL string                         `tegar:"custom_non_identity_deny_url,omitempty"`
+	Domain                   string                         `tegar:"domain"`
+	EnableBindingCookie      *bool                          `tegar:"enable_binding_cookie,omitempty"`
+	GatewayRules             []AccessApplicationGatewayRule `tegar:"gateway_rules,omitempty"`
+	HttpOnlyCookieAttribute  *bool                          `tegar:"http_only_cookie_attribute,omitempty"`
+	LogoURL                  string                         `tegar:"logo_url,omitempty"`
+	Name                     string                         `tegar:"name"`
+	PathCookieAttribute      *bool                          `tegar:"path_cookie_attribute,omitempty"`
+	PrivateAddress           string                         `tegar:"private_address"`
+	SaasApplication          *SaasApplication               `tegar:"saas_app,omitempty"`
+	SameSiteCookieAttribute  string                         `tegar:"same_site_cookie_attribute,omitempty"`
+	SelfHostedDomains        []string                       `tegar:"self_hosted_domains"`
+	ServiceAuth401Redirect   *bool                          `tegar:"service_auth_401_redirect,omitempty"`
+	SessionDuration          string                         `tegar:"session_duration,omitempty"`
+	SkipInterstitial         *bool                          `tegar:"skip_interstitial,omitempty"`
+	Type                     AccessApplicationType          `tegar:"type,omitempty"`
+	CustomPages              []string                       `tegar:"custom_pages,omitempty"`
+	Tags                     []string                       `tegar:"tags,omitempty"`
 	AccessAppLauncherCustomization
 }
 
 type UpdateAccessApplicationParams struct {
-	ID                       string                         `json:"id,omitempty"`
-	AllowedIdps              []string                       `json:"allowed_idps,omitempty"`
-	AppLauncherVisible       *bool                          `json:"app_launcher_visible,omitempty"`
-	AUD                      string                         `json:"aud,omitempty"`
-	AutoRedirectToIdentity   *bool                          `json:"auto_redirect_to_identity,omitempty"`
-	CorsHeaders              *AccessApplicationCorsHeaders  `json:"cors_headers,omitempty"`
-	CustomDenyMessage        string                         `json:"custom_deny_message,omitempty"`
-	CustomDenyURL            string                         `json:"custom_deny_url,omitempty"`
-	CustomNonIdentityDenyURL string                         `json:"custom_non_identity_deny_url,omitempty"`
-	Domain                   string                         `json:"domain"`
-	EnableBindingCookie      *bool                          `json:"enable_binding_cookie,omitempty"`
-	GatewayRules             []AccessApplicationGatewayRule `json:"gateway_rules,omitempty"`
-	HttpOnlyCookieAttribute  *bool                          `json:"http_only_cookie_attribute,omitempty"`
-	LogoURL                  string                         `json:"logo_url,omitempty"`
-	Name                     string                         `json:"name"`
-	PathCookieAttribute      *bool                          `json:"path_cookie_attribute,omitempty"`
-	PrivateAddress           string                         `json:"private_address"`
-	SaasApplication          *SaasApplication               `json:"saas_app,omitempty"`
-	SameSiteCookieAttribute  string                         `json:"same_site_cookie_attribute,omitempty"`
-	SelfHostedDomains        []string                       `json:"self_hosted_domains"`
-	ServiceAuth401Redirect   *bool                          `json:"service_auth_401_redirect,omitempty"`
-	SessionDuration          string                         `json:"session_duration,omitempty"`
-	SkipInterstitial         *bool                          `json:"skip_interstitial,omitempty"`
-	Type                     AccessApplicationType          `json:"type,omitempty"`
-	CustomPages              []string                       `json:"custom_pages,omitempty"`
-	Tags                     []string                       `json:"tags,omitempty"`
+	ID                       string                         `tegar:"id,omitempty"`
+	AllowedIdps              []string                       `tegar:"allowed_idps,omitempty"`
+	AppLauncherVisible       *bool                          `tegar:"app_launcher_visible,omitempty"`
+	AUD                      string                         `tegar:"aud,omitempty"`
+	AutoRedirectToIdentity   *bool                          `tegar:"auto_redirect_to_identity,omitempty"`
+	CorsHeaders              *AccessApplicationCorsHeaders  `tegar:"cors_headers,omitempty"`
+	CustomDenyMessage        string                         `tegar:"custom_deny_message,omitempty"`
+	CustomDenyURL            string                         `tegar:"custom_deny_url,omitempty"`
+	CustomNonIdentityDenyURL string                         `tegar:"custom_non_identity_deny_url,omitempty"`
+	Domain                   string                         `tegar:"domain"`
+	EnableBindingCookie      *bool                          `tegar:"enable_binding_cookie,omitempty"`
+	GatewayRules             []AccessApplicationGatewayRule `tegar:"gateway_rules,omitempty"`
+	HttpOnlyCookieAttribute  *bool                          `tegar:"http_only_cookie_attribute,omitempty"`
+	LogoURL                  string                         `tegar:"logo_url,omitempty"`
+	Name                     string                         `tegar:"name"`
+	PathCookieAttribute      *bool                          `tegar:"path_cookie_attribute,omitempty"`
+	PrivateAddress           string                         `tegar:"private_address"`
+	SaasApplication          *SaasApplication               `tegar:"saas_app,omitempty"`
+	SameSiteCookieAttribute  string                         `tegar:"same_site_cookie_attribute,omitempty"`
+	SelfHostedDomains        []string                       `tegar:"self_hosted_domains"`
+	ServiceAuth401Redirect   *bool                          `tegar:"service_auth_401_redirect,omitempty"`
+	SessionDuration          string                         `tegar:"session_duration,omitempty"`
+	SkipInterstitial         *bool                          `tegar:"skip_interstitial,omitempty"`
+	Type                     AccessApplicationType          `tegar:"type,omitempty"`
+	CustomPages              []string                       `tegar:"custom_pages,omitempty"`
+	Tags                     []string                       `tegar:"tags,omitempty"`
 	AccessAppLauncherCustomization
 }
 
